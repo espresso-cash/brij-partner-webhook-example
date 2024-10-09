@@ -6,13 +6,11 @@ export async function webhookHandler(body) {
   console.log("--- Webhook Example Usage ---");
 
   try {
-    // 0. If you don't have a seed, generate one and save it
-    // const generatedKeyPair = await XFlowPartnerClient.generateKeyPair();
-    // console.log(generatedKeyPair);
-    // generateKeyPair.seed
-
     // -------------------------------------------------------------------------------------------------
-    // HERE YOU NEED TO CHANGE THE SEED TO THE SEED WITH generatedKeyPair.seed
+    // If you don't have a seed, generate one and save it
+    // const generatedKeyPair = await XFlowPartnerClient.generateKeyPair();
+    // -------------------------------------------------------------------------------------------------
+    // HERE YOU NEED TO PUT YOUR SEED WITH generatedKeyPair.seed
     // -------------------------------------------------------------------------------------------------
     const seed = "XXXXXXX";
 
@@ -78,6 +76,9 @@ export async function webhookHandler(body) {
         console.log("Order rejected: Unable to process order");
         return;
       }
+
+      // Once you are ready to create the order, you can create your order into your own system
+      // And then accept the order here
       await client.acceptOffRampOrder({
         orderId,
         cryptoWalletAddress: "CRYPTO_WALLET_ADDRESS",
