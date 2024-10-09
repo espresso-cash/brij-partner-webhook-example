@@ -6,13 +6,9 @@ export async function webhookHandler(body) {
   console.log("--- Webhook Example Usage ---");
 
   try {
-    // -------------------------------------------------------------------------------------------------
-    // If you don't have a seed, you can generate one and save it
-    // const generatedKeyPair = await XFlowPartnerClient.generateKeyPair();
     // Or you can use the Keypair for test purpose below
     // publicKey: 'F2etcaJ1HbPVjjKfp4WaZFF1DoQRNUETkXyM1b98u76C'
     // seed: 'GVb2FXnG64Xpr6KbWP6Jp4hXWSkWU4uL9AgBTsdBjnZp'
-    // -------------------------------------------------------------------------------------------------
     const seed = "GVb2FXnG64Xpr6KbWP6Jp4hXWSkWU4uL9AgBTsdBjnZp";
 
     // Initialize partner client with your auth key pair
