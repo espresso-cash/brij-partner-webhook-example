@@ -33,6 +33,26 @@ export async function webhookHandler(body) {
     // For now, in Test Environment, we don't validate the KYC result
     // In Production, you will be able validate the KYC result and reject the order if the KYC is not valid
 
+    // Verify user's email and phone number
+    //
+    // These methods check if the user's email and phone number have been verified.
+    // They return objects containing the value (email/phone) and a boolean indicating verification status.
+    //
+    // Return format: { value: 'test@example.com', verified: true }
+
+    // Get email validation result
+    const emailValidationResult = await client.getEmail({
+      secretKey: secretKey,
+      userPK: userPK,
+    });
+
+    // Get phone validation result
+    const phoneValidationResult = await client.getPhone({
+      secretKey: secretKey,
+      userPK: userPK,
+    });
+
+
     const { cryptoAmount, cryptoCurrency, fiatAmount, fiatCurrency, type } = order;
 
     let canProcessOrder;
