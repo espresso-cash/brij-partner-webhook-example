@@ -22,12 +22,14 @@ export async function webhookHandler(body) {
     // Get user secret key
     const secretKey = await client.getUserSecretKey(userPK);
 
+    /*
     // Get KYC result
     const kycValidationResult = await client.getValidationResult({
       key: "kycSmileId",
       secretKey: secretKey,
       userPK: userPK,
     });
+    */
 
     // KYC should return JSON result of validation. Ie: for Nigeria, it is SmileID result
     // For now, in Test Environment, we don't validate the KYC result
@@ -41,6 +43,8 @@ export async function webhookHandler(body) {
     // Return format: { value: 'test@example.com', verified: true }
 
     // Get email validation result
+
+    /*
     const emailValidationResult = await client.getEmail({
       secretKey: secretKey,
       userPK: userPK,
@@ -51,7 +55,7 @@ export async function webhookHandler(body) {
       secretKey: secretKey,
       userPK: userPK,
     });
-
+    */
 
     const { cryptoAmount, cryptoCurrency, fiatAmount, fiatCurrency, type } = order;
 
@@ -79,7 +83,7 @@ export async function webhookHandler(body) {
         orderId,
         bankName: "Your Bank Name2", // This is the bank name that will be displayed to the user in the app
         bankAccount: "Your Bank Account2", // This is the bank account that will be displayed to the user in the app
-        externalId: "EXTERNAL_ID", // This is ID that you will use to identify the order in your own system
+        externalId: Math.random().toString(), // This is ID that you will use to identify the order in your own system
       });
       console.log("On-Ramp order accepted successfully");
     } else if (type === "OFF_RAMP") {
@@ -99,7 +103,7 @@ export async function webhookHandler(body) {
       await client.acceptOffRampOrder({
         orderId,
         cryptoWalletAddress: "CRYPTO_WALLET_ADDRESS",
-        externalId: "EXTERNAL_ID",
+        externalId: Math.random().toString(),
       });
       console.log("Off-Ramp order accepted successfully");
     }
