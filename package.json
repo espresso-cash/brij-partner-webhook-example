@@ -5,6 +5,6 @@
   },
   "dependencies": {
     "express": "^4.21.1",
-    "xflow-partner-client": "github:espresso-cash/xflow-partner-client"
+    "xflow-partner-client": "github:espresso-cash/xflow-partner-client#user-schema-update"
   }
 }

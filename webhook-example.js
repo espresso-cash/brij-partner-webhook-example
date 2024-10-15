@@ -22,36 +22,11 @@ export async function webhookHandler(body) {
     // Get user secret key
     const secretKey = await client.getUserSecretKey(userPK);
 
-    // Get KYC result
-    const kycValidationResult = await client.getValidationResult({
-      key: "kycSmileId",
+    // Get User Data
+    const userData = await client.getUserData({
       secretKey: secretKey,
       userPK: userPK,
     });
-
-    // KYC should return JSON result of validation. Ie: for Nigeria, it is SmileID result
-    // For now, in Test Environment, we don't validate the KYC result
-    // In Production, you will be able validate the KYC result and reject the order if the KYC is not valid
-
-    // Verify user's email and phone number
-    //
-    // These methods check if the user's email and phone number have been verified.
-    // They return objects containing the value (email/phone) and a boolean indicating verification status.
-    //
-    // Return format: { value: 'test@example.com', verified: true }
-
-    // Get email validation result
-    const emailValidationResult = await client.getEmail({
-      secretKey: secretKey,
-      userPK: userPK,
-    });
-
-    // Get phone validation result
-    const phoneValidationResult = await client.getPhone({
-      secretKey: secretKey,
-      userPK: userPK,
-    });
-
 
     const { cryptoAmount, cryptoCurrency, fiatAmount, fiatCurrency, type } = order;
 
