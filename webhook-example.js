@@ -7,7 +7,7 @@ export async function webhookHandler(body) {
     // You can use the following Keypair for test purpose:
     // - publicKey: 'F2etcaJ1HbPVjjKfp4WaZFF1DoQRNUETkXyM1b98u76C'
     // - seed: 'GVb2FXnG64Xpr6KbWP6Jp4hXWSkWU4uL9AgBTsdBjnZp'
-    const seed = "J3JsrGhN3rY216xWmRT5Rhrx3Y7HqVCKqKEZvLqxbZGP";
+    const seed = "GVb2FXnG64Xpr6KbWP6Jp4hXWSkWU4uL9AgBTsdBjnZp";
 
     // Initialize partner client with your auth key pair.
     const client = await XFlowPartnerClient.fromSeed(seed);
