@@ -32,23 +32,60 @@ export async function webhookHandler(body) {
     //   email: [
     //     {
     //       value: 'test@example.com',
-    //       dataId: '20946f48-9068-453d-a124-a5f5d764b3cc',
+    //       dataId: '78415b43-181f-48e4-afbe-a14399f8452f',
     //       status: 'APPROVED'
     //     }
     //   ],
     //   phone: [
     //     {
-    //       value: '+1234567890',
-    //       dataId: 'b31b5b28-d55f-4eda-b20f-e581f0d16bfe',
+    //       value: '1234567890',
+    //       dataId: 'b0dbd7ac-c7e4-4c32-bd73-58ed6e8e46a1',
+    //       status: 'APPROVED'
+    //     }
+    //   ],
+    //   name: [
+    //     {
+    //       firstName: 'Test',
+    //       lastName: 'Example',
+    //       dataId: 'e8537e3e-1e76-46a4-a85c-9570bbc1765f',
+    //       status: 'APPROVED'
+    //     }
+    //   ],
+    //   birthDate: [
+    //     {
+    //       value: 2024-09-30T22:00:00.000Z,
+    //       dataId: '433bb537-77e6-4d6d-ac1e-e93427ed43e9',
+    //       status: 'APPROVED'
+    //     }
+    //   ],
+    //   document: [
+    //     {
+    //       type: 'DOCUMENT_TYPE_VOTER_ID',
+    //       number: '0000000000000000004',
+    //       countryCode: 'NG',
+    //       dataId: '1b271dc9-4f37-43a1-ad88-bdffb4c0ec29',
+    //       status: 'APPROVED'
+    //     }
+    //   ],
+    //   bankInfo: [
+    //     {
+    //       bankName: '',
+    //       accountNumber: '',
+    //       bankCode: '',
+    //       dataId: '3c4e5802-e2ed-4d94-8341-9a5b1f326cf8',
     //       status: 'UNSPECIFIED'
     //     }
     //   ],
-    //   name: [],
-    //   birthDate: [],
-    //   document: [],
-    //   bankInfo: [],
-    //   selfie: [],
-    //   custom: {}
+    //   selfie: [
+    //     {
+    //       value: [Uint8Array],
+    //       dataId: '3ec6ce13-fc45-47e1-9eba-d94ef0b86017',
+    //       status: 'APPROVED'
+    //     }
+    //   ],
+    //   custom: {
+    //     kycSmileId: '{...}'
+    //   }
     // }
 
     const {
