@@ -1,4 +1,4 @@
-import { XFlowPartnerClient } from "xflow-partner-client";
+import { BrijPartnerClient } from "brij-partner-sdk";
 
 export async function webhookHandler(body) {
   console.log("--- Webhook Example Usage ---");
@@ -10,7 +10,7 @@ export async function webhookHandler(body) {
     const seed = "GVb2FXnG64Xpr6KbWP6Jp4hXWSkWU4uL9AgBTsdBjnZp";
 
     // Initialize partner client with your auth key pair.
-    const client = await XFlowPartnerClient.fromSeed(seed);
+    const client = await BrijPartnerClient.fromSeed(seed);
 
     const orderId = body.orderId;
     const order = await client.getOrder({ orderId: orderId });
