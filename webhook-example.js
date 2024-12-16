@@ -1,4 +1,4 @@
-import { XFlowPartnerClient } from "xflow-partner-client";
+import { BrijPartnerClient } from "brij-partner-sdk";
 
 export async function webhookHandler(body) {
   console.log("--- Webhook Example Usage ---");
@@ -10,7 +10,7 @@ export async function webhookHandler(body) {
     const seed = "GVb2FXnG64Xpr6KbWP6Jp4hXWSkWU4uL9AgBTsdBjnZp";
 
     // Initialize partner client with your auth key pair.
-    const client = await XFlowPartnerClient.fromSeed(seed);
+    const client = await BrijPartnerClient.fromSeed(seed);
 
     const orderId = body.orderId;
     const order = await client.getOrder({ orderId: orderId });
@@ -29,60 +29,46 @@ export async function webhookHandler(body) {
     console.log(userData);
     // Example response:
     // {
-    //   email: [
-    //     {
-    //       value: 'test@example.com',
-    //       dataId: '78415b43-181f-48e4-afbe-a14399f8452f',
-    //       status: 'APPROVED'
-    //     }
-    //   ],
-    //   phone: [
-    //     {
-    //       value: '1234567890',
-    //       dataId: 'b0dbd7ac-c7e4-4c32-bd73-58ed6e8e46a1',
-    //       status: 'APPROVED'
-    //     }
-    //   ],
-    //   name: [
-    //     {
-    //       firstName: 'Test',
-    //       lastName: 'Example',
-    //       dataId: 'e8537e3e-1e76-46a4-a85c-9570bbc1765f',
-    //       status: 'APPROVED'
-    //     }
-    //   ],
-    //   birthDate: [
-    //     {
-    //       value: 2024-09-30T22:00:00.000Z,
-    //       dataId: '433bb537-77e6-4d6d-ac1e-e93427ed43e9',
-    //       status: 'APPROVED'
-    //     }
-    //   ],
-    //   document: [
-    //     {
-    //       type: 'DOCUMENT_TYPE_VOTER_ID',
-    //       number: '0000000000000000004',
-    //       countryCode: 'NG',
-    //       dataId: '1b271dc9-4f37-43a1-ad88-bdffb4c0ec29',
-    //       status: 'APPROVED'
-    //     }
-    //   ],
-    //   bankInfo: [
-    //     {
-    //       bankName: '',
-    //       accountNumber: '',
-    //       bankCode: '',
-    //       dataId: '3c4e5802-e2ed-4d94-8341-9a5b1f326cf8',
-    //       status: 'UNSPECIFIED'
-    //     }
-    //   ],
-    //   selfie: [
-    //     {
-    //       value: [Uint8Array],
-    //       dataId: '3ec6ce13-fc45-47e1-9eba-d94ef0b86017',
-    //       status: 'APPROVED'
-    //     }
-    //   ],
+    //   email: {
+    //     value: 'test@example.com',
+    //     dataId: '78415b43-181f-48e4-afbe-a14399f8452f',
+    //     status: 'APPROVED'
+    //   },
+    //   phone: {
+    //     value: '1234567890',
+    //     dataId: 'b0dbd7ac-c7e4-4c32-bd73-58ed6e8e46a1',
+    //     status: 'APPROVED'
+    //   },
+    //   name: {
+    //     firstName: 'Test',
+    //     lastName: 'Example',
+    //     dataId: 'e8537e3e-1e76-46a4-a85c-9570bbc1765f',
+    //     status: 'APPROVED'
+    //   },
+    //   birthDate: {
+    //     value: 2024-09-30T22:00:00.000Z,
+    //     dataId: '433bb537-77e6-4d6d-ac1e-e93427ed43e9',
+    //     status: 'APPROVED'
+    //   },
+    //   document: {
+    //     type: 'DOCUMENT_TYPE_VOTER_ID',
+    //     number: '0000000000000000004',
+    //     countryCode: 'NG',
+    //     dataId: '1b271dc9-4f37-43a1-ad88-bdffb4c0ec29',
+    //     status: 'APPROVED'
+    //   },
+    //   bankInfo: {
+    //     bankName: '',
+    //     accountNumber: '',
+    //     bankCode: '',
+    //     dataId: '3c4e5802-e2ed-4d94-8341-9a5b1f326cf8',
+    //     status: 'UNSPECIFIED'
+    //   },
+    //   selfie: {
+    //     value: [Uint8Array],
+    //     dataId: '3ec6ce13-fc45-47e1-9eba-d94ef0b86017',
+    //     status: 'APPROVED'
+    //   },
     //   custom: {
     //     kycSmileId: '{...}'
     //   }
@@ -130,13 +116,14 @@ export async function webhookHandler(body) {
       // Once you are ready to process the order, you can create the order in
       // your own system, and then accept the order here.
       await client.acceptOnRampOrder({
-        orderId,
+        orderId: orderId,
         // Bank name that will be displayed to the user in the app
         bankName: "Your Bank Name2",
         // Bank account that will be displayed to the user in the app
         bankAccount: "Your Bank Account2",
         // ID that you can use to identify the order in your own system
         externalId: Math.random().toString(),
+        userSecretKey: secretKey,
       });
       console.log("On-Ramp order accepted successfully");
     } else if (type === "OFF_RAMP") {

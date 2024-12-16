@@ -5,6 +5,6 @@
   },
   "dependencies": {
     "express": "^4.21.1",
-    "xflow-partner-client": "github:espresso-cash/xflow-partner-client"
+    "brij-partner-sdk": "github:espresso-cash/brij-partner-sdk-js#d94a858a43b54e886453573f5761a5a3d53dcbb0"
   }
 }
